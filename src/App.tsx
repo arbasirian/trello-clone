@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { CardsColumn, ColumnForm } from "components";
 import { ColumnModel } from "models";
@@ -49,12 +49,13 @@ function App() {
     <div className={styles.PageContainer}>
       <h1>Todo Board</h1>
       <div className={styles.ColumnsContainer}>
-        {[...columns].map((column) => (
+        {[...columns.values()].map((column) => (
           <CardsColumn
-            key={column[0]}
-            column={column[1]}
+            key={column.id}
+            column={column}
             onUpdate={handleUpdate}
             onRemoveColumn={handleRemoveColumn}
+            columnsData={columns}
           />
         ))}
         <div className={styles.NewColumnContainer}>

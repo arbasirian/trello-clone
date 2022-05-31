@@ -9,11 +9,13 @@ import { Plus, Trash2 } from "react-feather";
 
 type Props = {
   column: ColumnModel;
+  columnsData: Map<string, ColumnModel>;
   onUpdate: (id: string, column: ColumnModel) => void;
   onRemoveColumn: (id: string) => void;
 };
 const CardsColumnComponent: FC<Props> = ({
   column,
+  columnsData,
   onUpdate,
   onRemoveColumn,
 }) => {
@@ -22,6 +24,10 @@ const CardsColumnComponent: FC<Props> = ({
   const [selectedCard, setSelectedCard] = useState<CardModel | undefined>();
   const cardsList = convertCardsMapToArray(column.cards);
 
+  /**
+   * Factory function that update column name
+   * @param {string} title  - column name
+   */
   const handleChangeColumnName = (title: string) => {
     onUpdate(column.id, {
       ...column,
@@ -30,8 +36,32 @@ const CardsColumnComponent: FC<Props> = ({
     setChangeTitle(false);
   };
 
+  /**
+   * Update or add new card
+   * @param {NewCardModel} data  - card form data
+   * @returns {void}
+   */
   const handleCardAction = (data: NewCardModel) => {
+    // Update card
     if (selectedCard?.id) {
+      if (column.id !== data.columnId) {
+        const newColumnDetails = columnsData.get(data.columnId);
+        const newCardId = generateId("card", data.title);
+        // Couldn't fin new columns data
+        if (!newColumnDetails) return;
+
+        column.cards.delete(selectedCard.id);
+        newColumnDetails.cards.set(newCardId, {
+          id: newCardId,
+          title: data.title,
+          description: data.description,
+        });
+        onUpdate(column.id, column);
+        onUpdate(data.columnId, newColumnDetails);
+        setShowCardModal(false);
+        setSelectedCard(undefined);
+        return;
+      }
       column.cards.set(selectedCard.id, {
         id: selectedCard.id,
         title: data.title,
@@ -43,6 +73,8 @@ const CardsColumnComponent: FC<Props> = ({
       setSelectedCard(undefined);
       return;
     }
+
+    // Add new card
     const id = generateId("card", data.title);
     column.cards.set(id, {
       id,
@@ -57,6 +89,28 @@ const CardsColumnComponent: FC<Props> = ({
   const handleCancelCardForm = () => {
     setShowCardModal(false);
     setSelectedCard(undefined);
+  };
+
+  /**
+   * Factory function that delete card
+   * @returns {void}
+   */
+  const handleDeleteCard = () => {
+    if (!selectedCard) return;
+    column.cards.delete(selectedCard.id);
+    onUpdate(column.id, column);
+    setShowCardModal(false);
+    setSelectedCard(undefined);
+    return;
+  };
+
+  /**
+   * Factory function that select card data and open modal
+   * @param {CardModel} card - card details
+   */
+  const handleUpdateCardDetails = (card: CardModel) => {
+    setSelectedCard(card);
+    setShowCardModal(true);
   };
 
   return (
@@ -91,7 +145,11 @@ const CardsColumnComponent: FC<Props> = ({
         </div>
         <div className={styles.CardsContainer}>
           {cardsList.map((card) => (
-            <CardItem key={card.id} details={card.details} />
+            <CardItem
+              onEdit={() => handleUpdateCardDetails(card.details)}
+              key={card.id}
+              details={card.details}
+            />
           ))}
         </div>
         <div className={styles.ColumnFooter}>
@@ -106,9 +164,11 @@ const CardsColumnComponent: FC<Props> = ({
       <Modal visible={showCardModal} onCancel={() => handleCancelCardForm()}>
         <CardForm
           initials={selectedCard}
-          column={column.title}
+          column={column}
           onSubmit={handleCardAction}
           onCancel={() => handleCancelCardForm()}
+          onDeleteCard={handleDeleteCard}
+          columnsOptions={[...columnsData.values()]}
         />
       </Modal>
     </>

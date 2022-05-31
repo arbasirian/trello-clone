@@ -7,6 +7,7 @@ export interface CardModel {
 export interface NewCardModel {
   title: string;
   description: string;
+  columnId: string;
 }
 
 export interface CardListItemModel {

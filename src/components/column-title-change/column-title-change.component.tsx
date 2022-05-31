@@ -28,6 +28,7 @@ const ColumnTitleChangeComponent: FC<Props> = ({
         className={styles.Update}
         title="Update Title"
         onClick={() => onUpdate(title)}
+        disabled={columnTitle === title}
       >
         <Check />
       </button>

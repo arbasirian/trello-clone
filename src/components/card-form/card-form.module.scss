@@ -2,10 +2,14 @@
   flex-direction: column;
   display: flex;
   gap: 10px;
+  select,
   input,
   textarea {
     padding: 10px;
     border: 1px solid #eee;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
   }
 }
 
@@ -25,7 +29,8 @@
   background-color: #0068ff;
   border-radius: 8px;
   color: #fff;
-  font-size: 12px;
+  margin-bottom: 10px;
+  width: auto;
 }
 
 .ActionContainer {
@@ -56,4 +61,21 @@
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+}
+
+.DeleteCardBtn {
+  border-radius: 4px;
+  background-color: #d32f2f;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }

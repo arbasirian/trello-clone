@@ -5,3 +5,8 @@ export interface ColumnModel {
   title: string;
   cards: Map<string, CardModel>;
 }
+
+export interface ColumnOptionModel {
+  key: string;
+  value: string;
+}
