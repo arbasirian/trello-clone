@@ -9,8 +9,8 @@ type Props = {
 const CardItemComponent: FC<Props> = ({ details }) => {
   return (
     <div className={styles.CardContainer}>
-      <div>{details.title}</div>
-      <div>{details.description}</div>
+      <div className={styles.CardTitle}>{details.title}</div>
+      <div className={styles.Description}>{details.description}</div>
     </div>
   );
 };

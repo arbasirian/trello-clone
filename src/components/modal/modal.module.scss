@@ -1,4 +1,18 @@
-.ModalContainer {
+.BaseModalContainer {
   position: absolute;
-  top: 100px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background: #0000006b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ModalContainer {
+  padding: 25px;
+  min-width: 70vw;
+  background-color: #fff;
+  border-radius: 8px;
 }

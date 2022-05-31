@@ -1,0 +1,59 @@
+.CardFormContainer {
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+  input,
+  textarea {
+    padding: 10px;
+    border: 1px solid #eee;
+  }
+}
+
+.CardFormHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.CardTitle {
+  font-weight: 500;
+  font-size: 20px;
+}
+.ColumnBadge {
+  padding: 5px 10px;
+  background-color: #0068ff;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.ActionContainer {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.SubmitBtn {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fc8e01;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex: 1;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+.CancelBtn {
+  padding: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
