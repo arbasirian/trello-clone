@@ -1,6 +1,6 @@
 # Getting Started with Trello Clone Project
 
-This project is clone version of trello
+This project is clone version of trello,
 
 ## Available Scripts
 
@@ -20,6 +20,10 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
+
+## Online Version
+
+You can see the online version of the project at https://trello-clone-flame.vercel.app/
 
 ## Features
 
