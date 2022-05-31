@@ -1,6 +1,7 @@
-import { CardModel } from "models";
 import React, { FC } from "react";
 import { MoreHorizontal } from "react-feather";
+
+import { CardModel } from "models";
 
 import styles from "./card-item.module.scss";
 

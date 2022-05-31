@@ -1,8 +1,6 @@
 import { ColumnModel } from "models";
 import { CardListItemModel, CardModel } from "models";
 
-export const addNewCardAction = () => {};
-
 /**
  * Factory function that convert Object Map of card to array of cards
  * @param { Map<string, CardModel>} cards - cards of each column
@@ -15,8 +13,6 @@ export const convertCardsMapToArray = (
     const [id, details] = card;
     return { id, details };
   });
-
-export const addNewColumn = () => {};
 
 /**
  * Factory function that convert Object Map of columns to array of columns

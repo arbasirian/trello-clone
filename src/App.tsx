@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 
 import { CardsColumn, ColumnForm } from "components";
 import { ColumnModel } from "models";
@@ -13,6 +13,7 @@ function App() {
   const [columns, setColumn] =
     useState<Map<string, ColumnModel>>(INITIAL_COLUMNS);
 
+  // Factory function that add new column
   const handleAddNewColumn = (title: string) => {
     const id = generateId("column", title);
 
@@ -38,6 +39,7 @@ function App() {
     setColumn((prev) => new Map(prev.set(id, updatedColumn)));
   };
 
+  // Factory function that remove column
   const handleRemoveColumn = (id: string) => {
     setColumn((prev) => {
       prev.delete(id);

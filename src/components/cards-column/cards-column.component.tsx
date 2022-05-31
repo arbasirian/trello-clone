@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
+import { Plus, Trash2 } from "react-feather";
 
 import { CardForm, CardItem, ColumnTitleChange, Modal } from "components";
 import { convertCardsMapToArray, generateId } from "helpers";
 import { CardModel, ColumnModel, NewCardModel } from "models";
 
 import styles from "./cards-column.module.scss";
-import { Plus, Trash2 } from "react-feather";
 
 type Props = {
   column: ColumnModel;
