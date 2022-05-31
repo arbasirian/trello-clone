@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Check, Plus, X } from "react-feather";
+import { Check, X } from "react-feather";
 
 import styles from "./column-title-change.module.scss";
 

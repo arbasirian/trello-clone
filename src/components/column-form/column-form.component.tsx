@@ -1,4 +1,3 @@
-import { ColumnModel } from "models";
 import React, { FC, useState } from "react";
 import { X } from "react-feather";
 
