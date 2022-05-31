@@ -11,8 +11,9 @@
   align-items: center;
 }
 .ModalContainer {
+  width: 70vw;
   padding: 25px;
-  min-width: 70vw;
+  max-width: 500px;
   background-color: #fff;
   border-radius: 8px;
 }
