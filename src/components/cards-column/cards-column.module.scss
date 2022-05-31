@@ -1,0 +1,77 @@
+.ColumnContainer {
+  margin: 0 4px;
+  width: 272px;
+  background-color: #ebecf0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 150px;
+  min-width: 272px;
+}
+
+.ColumnHeader {
+  display: flex;
+  justify-content: space-between;
+  min-height: 20px;
+  padding: 10px 8px;
+}
+.ColumnHeaderTitleContainer {
+  flex: 1;
+  width: 100%;
+}
+.ColumnHeaderTitle {
+  cursor: pointer;
+  line-height: 28px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.ColumnFooter {
+  min-height: 20px;
+  padding: 10px 8px;
+}
+.RemoveColumn {
+  border-radius: 4px;
+  background-color: #d32f2f;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.AddCard {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #ebecf0;
+  &:hover {
+    background-color: #091e4214;
+    color: #172b4d;
+  }
+  display: flex;
+  align-items: center;
+  span {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.CardsContainer {
+  padding: 10px;
+}
