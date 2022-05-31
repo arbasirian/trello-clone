@@ -5,30 +5,39 @@ import { convertCardsMapToArray } from "helpers";
 import { ColumnModel } from "models";
 
 import styles from "./cards-column.module.scss";
-import { Trash2 } from "react-feather";
+import { Plus, Trash2 } from "react-feather";
 
 type Props = {
   column: ColumnModel;
-  onUpdateTitle: (id: string, column: ColumnModel) => void;
+  onUpdate: (id: string, column: ColumnModel) => void;
   onRemoveColumn: (id: string) => void;
 };
 const CardsColumnComponent: FC<Props> = ({
   column,
-  onUpdateTitle,
+  onUpdate,
   onRemoveColumn,
 }) => {
   const [changeTitle, setChangeTitle] = useState(false);
   const cardsList = convertCardsMapToArray(column.cards);
 
-  console.log("changeTitle", column.title, changeTitle);
-
   const handleChangeColumnName = (title: string) => {
-    onUpdateTitle(column.id, {
+    onUpdate(column.id, {
       ...column,
       title,
     });
     setChangeTitle(false);
   };
+
+  const handleAddNewCard = () => {
+    column.cards.set("test", {
+      title: "test",
+      id: "test",
+      description: "test here",
+    });
+
+    onUpdate(column.id, column);
+  };
+
   return (
     <div className={styles.ColumnContainer}>
       <div className={styles.ColumnHeader}>
@@ -58,13 +67,15 @@ const CardsColumnComponent: FC<Props> = ({
           <Trash2 />
         </button>
       </div>
-      <div>
+      <div className={styles.CardsContainer}>
         {cardsList.map((card) => (
           <CardItem key={card.id} details={card.details} />
         ))}
       </div>
       <div className={styles.ColumnFooter}>
-        <button className={styles.AddCard}>+ Add a card</button>
+        <button className={styles.AddCard} onClick={handleAddNewCard}>
+          <Plus /> <span>Add a card</span>
+        </button>
       </div>
     </div>
   );

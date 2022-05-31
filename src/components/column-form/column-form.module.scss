@@ -1,0 +1,37 @@
+.ColumnFormContainer {
+  padding: 10px;
+  display: block;
+}
+
+.TitleInput {
+  line-height: 26px;
+  border-color: #e0e0e0;
+  box-shadow: none;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 0px 5px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.ActionContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+.SubmitButton {
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #fc8e01;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.CancelBtn {
+  border: none;
+  background-color: transparent;
+}

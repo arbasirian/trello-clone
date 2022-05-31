@@ -1,20 +1,33 @@
 import { ColumnModel } from "models";
 import React, { FC, useState } from "react";
+import { X } from "react-feather";
+
+import styles from "./column-form.module.scss";
 
 type Props = {
-  initials?: ColumnModel;
   onSubmit: (data: string) => void;
+  onCancel: () => void;
 };
-const ColumnFormComponent: FC<Props> = ({ initials, onSubmit }) => {
-  const [columnTitle, setColumnTitle] = useState(initials?.title ?? "");
+const ColumnFormComponent: FC<Props> = ({ onSubmit }) => {
+  const [columnTitle, setColumnTitle] = useState("");
   return (
-    <div>
+    <div className={styles.ColumnFormContainer}>
       <input
+        className={styles.TitleInput}
         onChange={(event) => setColumnTitle(event.target.value)}
         placeholder="Enter list title..."
       />
-      <button onClick={() => onSubmit(columnTitle)}>Add List</button>
-      <button>X</button>
+      <div className={styles.ActionContainer}>
+        <button
+          className={styles.SubmitButton}
+          onClick={() => onSubmit(columnTitle)}
+        >
+          Add List
+        </button>
+        <button className={styles.CancelBtn} title="Cancel add">
+          <X />
+        </button>
+      </div>
     </div>
   );
 };
