@@ -1,0 +1,43 @@
+.ColumnContainer {
+  margin: 0 4px;
+  width: 272px;
+  background-color: #ebecf0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+.ColumnHeader {
+  display: flex;
+  justify-content: space-between;
+  min-height: 20px;
+  padding: 10px 8px;
+}
+.ColumnHeaderTitle {
+  flex: 1;
+  width: 100%;
+  cursor: pointer;
+  line-height: 28px;
+}
+
+.ColumnFooter {
+  min-height: 20px;
+  padding: 10px 8px;
+}
+
+.AddCard {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #ebecf0;
+
+  &:hover {
+    background-color: #091e4214;
+    color: #172b4d;
+  }
+}

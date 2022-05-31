@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import { CardsColumn } from "components";
+import { ColumnModel } from "models";
+import { INITIAL_COLUMNS } from "data/columns";
+
+import styles from "./App.module.scss";
 
 function App() {
+  const [columns, setColumn] =
+    useState<Map<string, ColumnModel>>(INITIAL_COLUMNS);
+
+  const handleAddNewColumn = () => {};
+
+  /**
+   *
+   * @param {string} id - column id
+   * @param {ColumnModel} updatedColumn - updated column data
+   */
+  const handleUpdate = (id: string, updatedColumn: ColumnModel): void => {
+    setColumn((prev) => new Map(prev.set(id, updatedColumn)));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.PageContainer}>
+      <h1>Todo Board</h1>
+      <div className={styles.ColumnsContainer}>
+        {[...columns].map((column) => (
+          <CardsColumn
+            key={column[0]}
+            column={column[1]}
+            onUpdateTitle={handleUpdate}
+            onRemoveColumn={() => {}}
+          />
+        ))}
+      </div>
     </div>
   );
 }
