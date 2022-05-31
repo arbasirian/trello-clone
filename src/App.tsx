@@ -21,6 +21,13 @@ function App() {
     setColumn((prev) => new Map(prev.set(id, updatedColumn)));
   };
 
+  const handleRemoveColumn = (id: string) => {
+    setColumn((prev) => {
+      prev.delete(id);
+      return new Map(prev);
+    });
+  };
+
   return (
     <div className={styles.PageContainer}>
       <h1>Todo Board</h1>
@@ -30,7 +37,7 @@ function App() {
             key={column[0]}
             column={column[1]}
             onUpdateTitle={handleUpdate}
-            onRemoveColumn={() => {}}
+            onRemoveColumn={handleRemoveColumn}
           />
         ))}
       </div>

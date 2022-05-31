@@ -5,6 +5,7 @@ import { convertCardsMapToArray } from "helpers";
 import { ColumnModel } from "models";
 
 import styles from "./cards-column.module.scss";
+import { Trash2 } from "react-feather";
 
 type Props = {
   column: ColumnModel;
@@ -31,22 +32,31 @@ const CardsColumnComponent: FC<Props> = ({
   return (
     <div className={styles.ColumnContainer}>
       <div className={styles.ColumnHeader}>
-        {changeTitle ? (
-          <ColumnTitleChange
-            columnTitle={column.title}
-            onCancel={() => {
-              setChangeTitle(false);
-            }}
-            onUpdate={handleChangeColumnName}
-          />
-        ) : (
-          <div
-            onClick={() => setChangeTitle(true)}
-            className={styles.ColumnHeaderTitle}
-          >
-            {column.title}
-          </div>
-        )}
+        <div className={styles.ColumnHeaderTitleContainer}>
+          {changeTitle ? (
+            <ColumnTitleChange
+              columnTitle={column.title}
+              onCancel={() => {
+                setChangeTitle(false);
+              }}
+              onUpdate={handleChangeColumnName}
+            />
+          ) : (
+            <div
+              onClick={() => setChangeTitle(true)}
+              className={styles.ColumnHeaderTitle}
+            >
+              {column.title}
+            </div>
+          )}
+        </div>
+        <button
+          className={styles.RemoveColumn}
+          title="Remove column"
+          onClick={() => onRemoveColumn(column.id)}
+        >
+          <Trash2 />
+        </button>
       </div>
       <div>
         {cardsList.map((card) => (

@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react";
 import { Check, Plus, X } from "react-feather";
 
+import styles from "./column-title-change.module.scss";
+
 type Props = {
   columnTitle: string;
   onUpdate: (data: string) => void;
@@ -14,17 +16,26 @@ const ColumnTitleChangeComponent: FC<Props> = ({
   const [title, setTitle] = useState(columnTitle);
 
   return (
-    <div>
+    <div className={styles.TitleChangeContainer}>
       <input
+        className={styles.TitleChangeInput}
         value={title}
         type="text"
         onChange={(event) => setTitle(event.target.value)}
         placeholder="Enter list title..."
       />
-      <button title="Update Title" onClick={() => onUpdate(title)}>
+      <button
+        className={styles.Update}
+        title="Update Title"
+        onClick={() => onUpdate(title)}
+      >
         <Check />
       </button>
-      <button title="Cancel Update" onClick={() => onCancel()}>
+      <button
+        className={styles.Cancel}
+        title="Cancel Update"
+        onClick={() => onCancel()}
+      >
         <X />
       </button>
     </div>
